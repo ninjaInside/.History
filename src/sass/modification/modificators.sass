@@ -1,0 +1,48 @@
+$color_white: #fff
+$color_black: #000
+
+@mixin flex($direct, $just, $align)
+	display: flex
+	flex-direction: $direct
+	justify-content: $just
+	align-items: $align
+
+
+
+.page__text_flex-column
+	@include flex(column, center, center)
+.page__text_indent-p
+	padding: 30px	
+.page__aside-content_toggle-on
+	width: 300px !important
+.page__flex-center
+	justify-content: center !important
+	align-items: center !important
+.page__post-list_reverse
+	flex-direction: row-reverse !important
+
+
+.sidebar__button_info-white
+	background: url('../image/icon/dark-theme/info-white.png') !important
+	background-repeat: no-repeat !important
+	background-position: center !important
+.sidebar__button_menu-white
+	background: url('../image/icon/dark-theme/menu-white.svg') !important
+	background-repeat: no-repeat !important
+	background-position: center !important
+.sidebar__button_theme-white
+	background: url('../image/icon/dark-theme/sun.svg') !important
+	background-repeat: no-repeat !important
+	background-position: center !important
+.sidebar__button_menu-close-icon
+	background: url('../image/icon/close.png') !important
+	background-position: center
+	background-repeat: no-repeat
+.sidebar__button_menu-close-icon-white
+	background: url('../image/icon/dark-theme/close-white.png') !important
+	background-position: center
+	background-repeat: no-repeat
+
+
+.wrraper_flex-sb
+	@include flex(row, space-between, center)
