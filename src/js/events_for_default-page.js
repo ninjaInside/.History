@@ -15,6 +15,7 @@ $('.sidebar__button').click(e => {
 			toggle_menu(e, true);
 			toggle_info(e, true);
 			toggle_theme(e);
+			$('.sidebar').removeClass('sidebar_border-left');
 		break;
 
 	}
@@ -28,12 +29,30 @@ function toggle_menu(e, remove) {
 		$('.page__aside-menu').removeClass('page__aside-content_toggle-on')
 		$('.sidebar__button:nth-child(1)').removeClass('sidebar__button_menu-close-icon-white')
 		$('.sidebar__button:nth-child(1)').removeClass('sidebar__button_menu-close-icon')
-
+			
 		return;
 
 	}
 
 	$('.page__aside-menu').toggleClass('page__aside-content_toggle-on');
+
+	if (document.querySelector('.sidebar').getBoundingClientRect().left == 0) {
+
+		$('.sidebar').addClass('sidebar_border-left');
+
+	} else {
+
+		setTimeout(() => {
+
+			if (document.querySelector('.sidebar').getBoundingClientRect().left == 0) {
+
+				$('.sidebar').removeClass('sidebar_border-left');
+
+			}
+
+		}, 650);
+
+	};
 
 	if (!currentTheme) {
 
@@ -74,6 +93,25 @@ function toggle_info(e, remove) {
 	}
 
 	$('.page__aside-info').toggleClass('page__aside-content_toggle-on');
+	
+
+	if (document.querySelector('.sidebar').getBoundingClientRect().left == 0) {
+
+		$('.sidebar').addClass('sidebar_border-left');
+
+	} else {
+
+		setTimeout(() => {
+
+			if (document.querySelector('.sidebar').getBoundingClientRect().left < 0) {
+
+				$('.sidebar').removeClass('sidebar_border-left');
+
+			}
+
+		}, 650)
+
+	};
 
 	currentTarget = '.page__aside-info';
 
@@ -82,13 +120,14 @@ function toggle_info(e, remove) {
 function toggle_theme(e) {
 
 	$('*').toggleClass('dark-theme-all-opt');
-	$('.sidebar').toggleClass('dark-theme-shadow-opt')
+	$('.sidebar').toggleClass('dark-theme-shadow-opt');
+	$('.page__aside-info').toggleClass('dark-theme-background-special');
 
-	$('.sidebar__button[data-event="toggle_menu"]').toggleClass('sidebar__button_menu-white')
-	$('.sidebar__button[data-event="toggle_info"]').toggleClass('sidebar__button_info-white')
-	$('.sidebar__button[data-event="toggle_theme"]').toggleClass('sidebar__button_theme-white')
+	$('.sidebar__button[data-event$="menu"]').toggleClass('sidebar__button_menu-white');
+	$('.sidebar__button[data-event$="info"]').toggleClass('sidebar__button_info-white');
+	$('.sidebar__button[data-event$="theme"]').toggleClass('sidebar__button_theme-white');
 
-	
+
 	currentTheme = !currentTheme;
 
 }

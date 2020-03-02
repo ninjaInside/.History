@@ -1,5 +1,12 @@
+$color_main1: #494327
+
 $color_white: #fff
 $color_black: #000
+
+$h-color1: #bcc699
+$h_color2: #e4edaa
+$h-color3: #e15a97
+$h-color4: #e02a2a
 
 @mixin flex($direct, $just, $align)
 	display: flex
@@ -8,19 +15,38 @@ $color_black: #000
 	align-items: $align
 
 
+.body_white
+	background: $h-color1 !important  
+.body_no-scroll
+	overflow: hidden
+
+.header__sort-button_top
+	background-image: url('../image/icon/sort-top.png') !important
 
 .page__text_flex-column
 	@include flex(column, center, center)
 .page__text_indent-p
-	padding: 30px	
+	padding-top: 30px
 .page__aside-content_toggle-on
 	width: 300px !important
-.page__flex-center
+.page_flex-center
 	justify-content: center !important
 	align-items: center !important
 .page__post-list_reverse
 	flex-direction: row-reverse !important
-
+.page_indent-p
+	padding-top: 100px !important
+	padding-bottom: 10px !important
+.page_brown
+	background: $color_main1
+.page_flex-column
+	flex-direction: column !important
+.page_h
+	height: 100vh
+.page__navigation-reg_after-left:after
+	left: 0px !important 
+.page__navigation-reg_after-right:after 
+	right: 0px !important
 
 .sidebar__button_info-white
 	background: url('../image/icon/dark-theme/info-white.png') !important
@@ -46,3 +72,20 @@ $color_black: #000
 
 .wrraper_flex-sb
 	@include flex(row, space-between, center)
+.wrraper_relative-pos
+	position: relative 
+.wrraper_flex-center
+	@include flex(row, center, center)
+.wrraper_flex-column
+	@include flex(column, center, center)
+.wrraper_h
+	height: 100%
+
+
+.form-input__input_danger
+	background: $h-color4 !important
+.form-input__regestration_small
+	width: 400px !important
+	height: 350px !important
+.form-input__regestration_scale-b
+	transform: scale(1) !important

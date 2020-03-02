@@ -1,7 +1,12 @@
+$color_main1: #494327
 
 $color_white: #fff
 $color_black: #000
-$color_gray: #a3a3a3
+
+$h-color1: #bcc699
+$h_color2: #e4edaa
+$h-color3: #e15a97
+$h-color4: #e02a2a
 
 @mixin flex($direct, $just, $align)
 	display: flex
@@ -9,20 +14,10 @@ $color_gray: #a3a3a3
 	justify-content: $just
 	align-items: $align
 
-.dark-theme-all-opt
-	background: #000 
-	color: #fff !important
-	border-color: $color_white !important
-
-.dark-theme-shadow-opt
-	box-shadow: 3px 0 20px rgba(255, 255, 255, .2) !important
-
-
 .page
 	@include flex(row, flex-start, center)
 	width: 100% 
-	height: 100vh
-	background: $color_white
+	z-index: 1000
 
 	&__content
 		@include flex(column, center, center)
@@ -30,7 +25,7 @@ $color_gray: #a3a3a3
 		height: 100%
 
 	&__text
-		color: $color_black
+		color: $color_white
 		text-transform: uppercase
 		font-size: 3em
 
@@ -44,8 +39,9 @@ $color_gray: #a3a3a3
 		@include flex(column, flex-start, center)
 		height: 100%
 		width: 0px
-		background: $color_white
-		overflow: hidden
+		background: $color_main1
+		overflow-y: scroll
+		overflow-x: hidden
 		z-index: 1000
 
 		ul 
@@ -58,12 +54,13 @@ $color_gray: #a3a3a3
 
 		a 
 			@include flex(row, center, center)
-			height: 100%
-			width: 100%
+			flex-shrink: 0
+			height: 66px
+			width: 232px
 			text-align: center
 			text-transform: uppercase
 			font-size: 1.1em
-			color: $color_black
+			color: $color_white
 			z-index: 1000
 
 		li
@@ -71,17 +68,10 @@ $color_gray: #a3a3a3
 			background: transparent !important
 
 		a:hover
-			background: gray !important
+			background: $h-color1 !important
+			color: $color_black
 		a:hover li 
 			transform: translateX(10px)
-
-	&__aside-info
-		height: 100%
-		width: 0px
-		background: $color_white
-		overflow: hidden
-		z-index: 1000
-
 
 	&__text:hover &__text-anim-element
 		height: 100%
@@ -90,8 +80,7 @@ $color_gray: #a3a3a3
 	&__post-list
 		@include flex(row, flex-start, flex-start)
 		flex-wrap: wrap
-		height: inherit
-		width: inherit
+		width: 100%
 		padding-top: 50px
 
 	&__post-block
@@ -101,17 +90,17 @@ $color_gray: #a3a3a3
 		margin: 0 5px
 		margin-bottom: 10px
 		overflow: hidden
+		border-bottom: 2px solid $color_main1
 
 		&:hover .page__animate-image .page__post-block-background
 			transform: scale(1.3)
-			filter: blur(2px)
+	
+		&:hover
+			border-color: $color_black
 
-		&:hover .page__open-post-button
-			opacity: 1
-
-		
 		div
 			@include flex(column, flex-start, flex-start)
+			z-index: 1000
 
 		div:first-child
 			width: inherit
@@ -121,37 +110,113 @@ $color_gray: #a3a3a3
 			div
 				position: relative
 
-			a
-				border: 0
-				width: 60px
-				height: 60px
-				margin: 0 auto
-				position: absolute
-				left: 0
-				right: 0
-				top: 50%
-				transform: translateY(-50%)
-				z-index: 1000
-				opacity: 0
-
-				img
-					width: 100%
-
-
-
 			img 
 				width: 100%
 				height: 100%
 
 		div:last-child
-			span
+			a, span:last-child
 				padding-top: 5px
 
-			span:first-child
-				font-size: 1.2em
+			a:first-child
+				font-size: 1.3em
+
+				span
+					color: $color_black
 
 			span:last-child
 				font-size: .9em
+
+	&__no-search-msg
+		font-size: 1.9em
+
+	&__counter-posts
+		position: absolute
+		left: 5px
+		top: -10px
+		font-size: 1.4em
+
+	&__navigation-reg
+		@include flex(row, center, center)
+		margin-top: 25px
+		position: relative			
+
+		a:first-child
+			width: 60px
+			height: 60px
+			background: url('../image/icon/add-user.png')
+			background-repeat: no-repeat
+			background-position: center
+			background-size: 50px
+			margin-right: 5px
+
+		a:last-child
+			width: 60px
+			height: 60px
+			background: url('../image/icon/in.png')
+			background-repeat: no-repeat
+			background-position: center
+			background-size: 50px
+			margin-left: 5px
+
+		&:after
+			content: ''
+			position: absolute
+			bottom: 0
+			width: 60px
+			height: 2px
+			background: $h-color1
+
+	&__out-index-page 
+		@include flex(row, center, center)
+		margin-bottom: 15px
+		
+		a
+			width: 60px
+			height: 60px
+			background-image: url('../image/icon/outin.png')
+			background-color: transparent
+			background-repeat: no-repeat
+			background-position: center
+			background-size: 50px
+
+	&__article-panel
+		@include flex(row, center, flex-start)
+		width: inherit
+		padding-top: 30px
+
+		div 
+			width: 426px
+
+		div:nth-child(1)
+			@include flex(column, center, center)
+			padding-top: 40px
+			& > div:first-child
+				@include flex(column, center, flex-start)
+				background-color: $color_main1
+				color: $color-white
+				width: 230px
+				padding-top: 20px
+				padding-bottom: 20px
+				border-radius: 15px
+				padding-left: 30px
+
+				span
+					margin: 5px 0px
+
+		div:nth-child(2)
+			@include flex(column, center, flex-start)
+			width: 900px
+			font-size: 1.5em
+			word-wrap: break-word
+
+			span:first-child
+				border-bottom: 1px solid black
+				margin-bottom: 20px
+
+			span
+				display: block
+				margin-bottom: 35px
 
 
 .sidebar
@@ -159,8 +224,8 @@ $color_gray: #a3a3a3
 	width: 100px
 	height: 100%
 	box-shadow: 3px 0 20px rgba($color_black, .2)
-	border-left: .5px solid $color_black
 	position: relative
+	background: $h-color1
 
 	&__button
 		width: 54px
@@ -174,17 +239,13 @@ $color_gray: #a3a3a3
 			background: url('../image/icon/menu.svg')
 			background-repeat: no-repeat
 			background-position: center
+
 		&:nth-child(2)
-			background: url('../image/icon/info.png')
+			background: url('../image/icon/add-user.png')
 			background-size: 30px
 			background-repeat: no-repeat
 			background-position: center
-		&:nth-child(3)
-			background: url('../image/icon/moon.svg')
-			background-size: 30px
-			background-repeat: no-repeat
-			background-position: center
-			margin-bottom: 25px
+			margin-bottom: 30px
 
 	&__root-link 
 		@include flex(row, center, center)
@@ -200,24 +261,270 @@ $color_gray: #a3a3a3
 .wrraper
 	width: 100%
 	max-width: 1100px
-	height: 100%
 
 .header
 	@include flex(row, center, center)
 	width: 100%
-	height: 50px
-	position: relative
-
-	&__sort-button
-		background: url('../image/icon/sort.png') no-repeat
-		background-position: center
-		width: 32px
-		height: 32px
-		border: 0
+	height: 70px
+	position: fixed
+	z-index: 10000
+	background: $color_main1
 
 	&__search-input
 		border: 0
-		padding: 5px
-		border-bottom: 1px solid $color_gray
+		padding: 5px 15px
 		font-size: 1.1em
+		box-shadow: 10px 10px 10px rgba(0, 0, 0, .5)
+		border-radius: 100px
 
+	&__search-block
+		@include flex(row, center, center)
+		position: relative
+		margin-right: 10px
+
+	&__push-search-button
+		position: absolute
+		right: 15px
+		top: 50%
+		transform: translateY(-50%)
+		border: 0
+		background: url('../image/icon/search.svg') no-repeat
+		background-size: cover 
+		background-position: center 
+		width: 24px
+		height: 24px
+
+	&__functional
+		@include flex(flex, flex-start, center)
+
+		* 
+			margin: 0 5px
+
+		& a:first-of-type
+			margin-right: 25px
+
+		a 
+			@include flex(flex, center, center)
+			color: $color_white
+			border: 1px solid $color-white
+			border-radius: 100%
+			width: 54px
+			height: 54px
+			font-size: 1.4em
+
+		button
+			width: 32px
+			height: 32px
+			border: 0
+		
+	&__sort-button
+		background-image: url('../image/icon/sort-down.png')
+		background-repeat: no-repeat
+		background-size: 30px
+		background-position: center !important
+		border: 0
+		background-color: transparent
+
+
+.form-input
+	
+	&__regestration 
+		@include flex(column, center, center)
+		background: $h-color1
+		border-radius: 15px
+		width: 450px
+		height: 400px
+	
+
+		.form-input__input
+			margin: 15px 0
+			border-radius: 7px
+			background: $color_white
+			box-shadow: 0px 0px 15px rgba(0, 0, 0, .3)
+			border: 0
+			padding: 10px
+			width: 80%
+			
+			&:focus
+				background: $h_color2
+				transform: scale(1.05)
+
+		.form-input__button
+			padding: 10px 40px
+			border: 0
+			color: $color-white
+			font-size: 1.1em
+			border-radius: 5px
+			background: $h-color1
+			color: $color_main1
+			border: 1px solid $color_main1
+
+			&:hover 
+				background: $color_main1
+				color: $color-white
+				border-color: transparent
+
+			&:focus
+				background: $color_main1
+				color: $color-white
+				border-color: transparent
+
+	&__button
+		margin-top: 30px 
+
+.load-screen
+	@include flex(row, center, center)
+	z-index: 1000000
+	background: $h-color1
+	width: 100%
+	height: 100vh
+	position: absolute
+
+	img 
+		width: 64px
+
+// Media response
+
+@media all and (max-width: 1000px)
+	.page
+		&__text
+			font-size: 7em
+
+		&__aside-menu
+			font-size: 1.7em
+
+		&__post-list
+			justify-content: center !important
+
+		&__counter-posts
+			position: relative
+			padding-top: 45px
+			font-size: 2.5em 
+
+		&__post-block
+			@include flex(column, flex-start, flex-start)
+			width: 400px
+			height: 350px
+			margin: 0 10px
+			margin-bottom: 15px
+			overflow: hidden
+			border-bottom: 2px solid $color_main1
+
+			&:hover .page__animate-image .page__post-block-background
+				transform: scale(1)
+	
+			&:hover
+				border-color: $color_black
+
+			div
+				@include flex(column, flex-start, flex-start)
+				z-index: 1000
+
+			div:first-child
+				width: inherit
+				height: 250px
+				overflow: hidden
+			
+				div
+					position: relative
+
+				img 
+					width: 100%
+					height: 100%
+
+			div:last-child
+				a, span:last-child
+					paddiform-input__regestration_scale-bng-top: 5px
+
+				a:first-child
+					font-size: 1.3em
+					border-bottom: 2px solid $color_black
+
+				span
+					color: $color_black
+
+				span:last-child
+					font-size: 1.2em
+
+		&__navigation-reg
+			transform: scale(2.5)
+			margin-top: 295px
+	
+		&__out-index-page
+			margin-bottom: 285px
+			transform: scale(2.5)
+
+		&__article-panel
+
+			& > div
+				margin: 0 30px !important
+				
+				span:not([class$="index"])
+					font-size: 1.6em
+
+			& > div:first-child
+
+				div
+					
+
+
+	.sidebar
+		width: 200px 
+
+		&__button
+			width: 114px
+			height: 114px
+			background-size: 74px !important
+			background-repeat: no-repeat !important
+			background-position: center !important
+
+		&__root-link
+			width: 114px 
+			height: 114px
+			font-size: 3em
+
+
+	.header
+		height: 105px
+
+		&__search-input
+			font-size: 2.1em
+
+		&__search-block
+			margin-right: 30px 
+
+		&__push-search-button
+			width: 44px
+			height: 44px
+
+		&__functional
+			margin-left: 30px
+
+			& a:first-of-type
+				margin-right: 40px !important
+
+			a
+				width: 84px
+				height: 84px
+				font-size: 2.6em
+
+			button
+				width: 52px
+				height: 52px
+				border: 0
+
+		&__sort-button
+			background-size: 52px
+			background-position: center
+
+		&__sort-button-top
+			background-size: 52px !important
+
+
+	.form-input
+		transform: scale(1.45) 
+		&__regestration 
+			transform: scale(1.45)
+
+	.form-input__regestration_scale-b 
+		transform: scale(1.60) !important
