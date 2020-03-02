@@ -16,6 +16,7 @@ let gulp = require('gulp')
 	gulp.task('sass', function() {
 		return gulp.src('src/sass/**/*.sass')
 		.pipe(sass())
+		.pipe(mincss())
 		.pipe(postcss([autoprefixer([
 			'last 10 version'
 			])]))
@@ -26,8 +27,8 @@ let gulp = require('gulp')
 		.pipe(gulp.dest('src/css'))
 	});
 
-	gulp.task('js-validate-minify', function() {
-		return gulp.src('src/js/**/*.js')
+	gulp.task('js-validate-minify-def', function() {
+		return gulp.src('src/js/default_events/*.js')
 		.pipe(babel({
 			presets: ['@babel/env']
 		}))
@@ -35,7 +36,18 @@ let gulp = require('gulp')
 		.pipe(fixjs())
 		.pipe(uglify())
 		.pipe(concat('scripts-modules.min.js'))
-		.pipe(gulp.dest('dist/js'))
+		.pipe(gulp.dest('dist/js/default_events'))
+	});	
+
+	gulp.task('js-validate-minify-cast', function() {
+		return gulp.src('src/js/castom_events/*.js')
+		.pipe(babel({
+			presets: ['@babel/env']
+		}))
+		.pipe(jshint())
+		.pipe(fixjs())
+		.pipe(uglify())
+		.pipe(gulp.dest('dist/js/castom_events'))
 	});
 
 	gulp.task('libs-concat-minify', function() {
@@ -69,27 +81,32 @@ let gulp = require('gulp')
 	gulp.task('port-css', function() {
 	    return gulp.src('src/css/style.min.css')
 	    .pipe(gulp.dest('dist/css'));
-	})
+	});
 
 	gulp.task('port-fonts', function() {
-	    return gulp.src('src/fonts/**/*')
+	    return gulp.src('src/fonts/**')
 	    .pipe(gulp.dest('dist/fonts'));
 
-	})
+	});
 
 	gulp.task('port-html', function() {
-		return gulp.src('src/*.html')
-	    .pipe(gulp.dest('dist'));
-	})
+		return gulp.src('src/html/*.html')
+	    .pipe(gulp.dest('dist/html'));
+	});
 
-	gulp.task('port-img', function() {
-	  	return gulp.src('src/img/**/*')
-	    .pipe(gulp.dest('dist/img'));
-	})
+	gulp.task('port-img-back', function() {
+	  	return gulp.src('src/image/backgrounds/*')
+	    .pipe(gulp.dest('dist/image/backgrounds'));
+	});
+
+	gulp.task('port-img-icon', function() {
+	  	return gulp.src('src/image/icons/*')
+	    .pipe(gulp.dest('dist/image/icons'));
+	});
 
 	gulp.task('builder',gulp.series(
-		'clean', 'sass', 'js-validate-minify', 
-		'libs-concat-minify', 'port-css', 'port-img',
-		'port-html', 'port-fonts'), function() {
+		'clean', 'sass', 'js-validate-minify-def', 
+		'js-validate-minify-cast', 'libs-concat-minify', 'port-css', 
+		'port-img-icon', 'port-img-back', 'port-html', 'port-fonts'), function() {
 		return;
 	});
