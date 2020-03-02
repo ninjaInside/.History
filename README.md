@@ -1,13 +1,16 @@
 # .History
 
-It is site for people to share their knowledge of history 
-
-### Libraries, frameworks and other tools used in development
-
-  - jQuery
-  - Gulp
-  - Sass
+  **This project is a site for sharing knowledge between people 
+  in the field of history**
   
+## How to launch project
+  //--//
+## How to make edits
+  //--//
+## Author's 
   
+ - ninjaInside
+ - artemwokin
+ 
 
   
