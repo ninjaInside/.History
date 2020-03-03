@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="{% static 'js/castom_events/load_screen.js' %}" defer></script>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+	<title>History</title>
+    <script src="{% static 'libs/libs.min.js' %}" defer></script>
+    <script src="{% static 'js/default_events/scripts-modules.min.js' %}" defer></script>
+</head>
+<body class="body_no-scroll">
+	<div class="load-screen">
+        <img src="{% static 'image/icons/load.svg' %}" alt="">
+	</div>
+	<div class="page page_brown page_h">
+		<div class="menu">
+		<nav class="page__aside-menu">
+			<ul>
+                <a href="index_page-categories.html"><li>Human</li></a>
+				<a href="index_page-categories.html"><li>Modern</li></a>
+				<a href="index_page-categories.html"><li>Wars</li></a>
+				<a href="index_page-categories.html"><li>Political</li></a>
+				<a href="index_page-categories.html"><li>Bloods</li></a>
+				<a href="index_page-categories.html"><li>Kings</li></a>
+				<a href="index_page-categories.html"><li>Russia</li></a>
+				<a href="index_page-categories.html"><li>Qupou</li></a>
+				<a href="index_page-categories.html"><li>Gelent</li></a>
+				<a href="index_page-categories.html"><li>Others</li></a>
+			</ul>
+		</nav>
+		<div class="sidebar">
+			<button class="sidebar__button" data-event="toggle_menu"></button>
+			<a href="index_page-reg.html" class="sidebar__button" data-event="regestraiont-bar"></a>
+			<a href="index.html" class="sidebar__root-link">H</a>
+		</div>
+	</div>
+		<div class="page__content">
+			<span class="page__text page__text_flex-column page__text_indent-p">	
+				.history 
+				<span class="page__text-anim-element">Write.Cloud.Learn
+				</span>
+			</span>
+		</div>
+	</div>
+</body>
+</html>
