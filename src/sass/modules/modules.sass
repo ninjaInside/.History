@@ -18,6 +18,9 @@ $h-color4: #e02a2a
 	@include flex(row, flex-start, center)
 	width: 100% 
 	z-index: 1000
+	position: relative
+	flex-shrink: 0
+	transition: 0s
 
 	&__content
 		@include flex(column, center, center)
@@ -43,6 +46,7 @@ $h-color4: #e02a2a
 		overflow-y: scroll
 		overflow-x: hidden
 		z-index: 1000
+		transition: .25s ease-in-out !important
 
 		ul 
 			@include flex(column, flex-start, center)
@@ -56,12 +60,13 @@ $h-color4: #e02a2a
 			@include flex(row, center, center)
 			flex-shrink: 0
 			height: 66px
-			width: 232px
+			width: inherit
 			text-align: center
 			text-transform: uppercase
 			font-size: 1.1em
 			color: $color_white
 			z-index: 1000
+			transition: .25s ease-in-out
 
 		li
 			@include flex(row, center, center)
@@ -226,6 +231,8 @@ $h-color4: #e02a2a
 	box-shadow: 3px 0 20px rgba($color_black, .2)
 	position: relative
 	background: $h-color1
+	flex-shrink: 0
+	transition: .25s linear !important
 
 	&__button
 		width: 54px
@@ -327,8 +334,10 @@ $h-color4: #e02a2a
 
 
 .form-input
-	
-	&__regestration 
+	transition: 0s
+
+	&__regestration
+		transition: 0s 
 		@include flex(column, center, center)
 		background: $h-color1
 		border-radius: 15px
@@ -383,6 +392,12 @@ $h-color4: #e02a2a
 	img 
 		width: 64px
 
+.menu 
+	@include flex(row, flex-start, center)
+	position: absolute
+	height: 100%
+	z-index: 1000
+
 // Media response
 
 @media all and (max-width: 1000px)
@@ -391,7 +406,10 @@ $h-color4: #e02a2a
 			font-size: 7em
 
 		&__aside-menu
-			font-size: 1.7em
+			font-size: 2.6em
+
+			a
+				height: 150px
 
 		&__post-list
 			justify-content: center !important
@@ -467,7 +485,6 @@ $h-color4: #e02a2a
 				div
 					
 
-
 	.sidebar
 		width: 200px 
 
@@ -482,6 +499,9 @@ $h-color4: #e02a2a
 			width: 114px 
 			height: 114px
 			font-size: 3em
+
+	.page__aside-content_toggle-on
+		width: 780px !important
 
 
 	.header
