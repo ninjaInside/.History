@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="{% static 'js/castom_events/load_screen.js' %}" defer></script>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+	<title>Article</title>
+    <script src="{% static 'libs/libs.min.js' %}" defer></script>
+    <script src="{% static 'js/default_events/scripts-modules.min.js' %}" defer></script>
+</head>
+<body class="body_white">
+	<div class="load-screen">
+        <img src="{% static 'image/icons/load.svg' %}" alt="">
+	</div>
+	<div class="page">
+		<div class="page__article-panel">
+			<div>
+				<div>
+                    <span>Author: {{ post.author.username }}</span>
+                    <span>Time: {{ post.pub_date }}</span>
+                    <span>Cat: {{ post.category.title }}</span>
+				</div>
+			</div>
+			<div>
+                <span class="page__index"><h1>{{ post.title }}</h1></span>
+                <span>{{ post.content|safe }}</span>
+			</div>
+			<div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

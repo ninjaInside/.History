@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="{% static 'js/castom_events/load_screen.js' %}" defer></script>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+	<title>Categories</title>
+    <script src="{% static 'libs/libs.min.js' %}" defer></script>
+    <script src="{% static 'js/default_events/scripts-modules.min.js' %}" defer></script>
+</head>
+<body class="body_white body_no-scroll">
+	<div class="load-screen">
+        <img src="{% static 'image/icons/load.svg' %}" alt="">
+	</div>
+	<header class="header">
+		<div class="wrraper wrraper_flex-sb">
+			<div class="header__functional">
+				<a href="index.html">H</a>
+				<button class="header__sort-button"></button>
+			</div>
+			<div class="header__search-block">
+				<input name="search" type="text" placeholder="Search" class="header__search-input">
+				<button class="header__push-search-button"></button>
+			</div>
+		</div>
+	</header>
+	<div class="page page_flex-center page_indent-p page_flex-column">
+		<div class="wrraper wrraper_flex-column wrraper_relative-pos">
+			<div class="page__counter-posts">
+
+			</div>
+			<div class="page__post-list page__post-list_indent">
+                {% for post in post_list %}
+				<div class="page__post-block">
+					<div>
+						<div class="page__animate-image">
+                            <img src="{{ post.image.url }}" alt="" class="page__post-block-background">
+						</div>
+					</div>
+					<div>
+                        <a href="{{ post.get_absolute_url }}"><span class="page__main-value">{{ post.title }}</span></a>
+                        <span>{{ post.content|safe|truncatewords:5 }}</span>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>
