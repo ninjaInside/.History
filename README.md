@@ -36,7 +36,7 @@ python manage.py runserver
 ## Author's 
   
  - ninjaInside
- - artemwokin
+ - artemowkin
  
 
 ***Version: 1.1.3***  
