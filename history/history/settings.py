@@ -12,6 +12,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'homepage',
     'posts.apps.PostsConfig',
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -97,3 +98,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+
+LOGIN_REDIRECT_URL = '/'
