@@ -1,7 +1,6 @@
 # .History
 
-  **This project is a site for sharing knowledge between people 
-  in the field of history**  
+This project is a site for sharing knowledge between people in the field of history
 
 ## How to launch project
 
