@@ -71,17 +71,6 @@ $('.header__search-input').on('keyup', (e) => {
 });
 
 
-$('.header__toggle-theme').click((e) => {
-
-	$('*').toggleClass('dark-theme-all-opt');
-	$('.page').toggleClass('dark-theme-background-special');
-
-	$('.header__sort-button').toggleClass('header__sort-button-white')
-	$('.header__toggle-theme').toggleClass('sidebar__button_theme-white')
-	$('.header__push-search-button').toggleClass('header__push-search-button-white')
-
-});
-
 $(document).ready((e) => {
 
 	search_listPost()

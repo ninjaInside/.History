@@ -22,6 +22,39 @@ $h-color4: #e02a2a
 	flex-shrink: 0
 	transition: 0s
 
+	&__paginator
+		@include flex(row, center, center)
+		margin-top: 30px
+		margin-bottom: 30px
+
+		& > button:not([class="page__arrow-slide-page"])
+			background-color: transparent
+			border: 0
+			font-size: 25px
+			color: rgba(0, 0, 0, 1)
+			margin: 0 5px
+			z-index: 100000
+
+			& > img
+				z-index: 1 
+	
+	&__arrow-slide-page
+		@include flex(column, center, center)
+		width: 38px
+		height: 38px
+		border: 0
+		background: transparent
+
+		& > img
+			width: 32px
+
+		&:first-child
+			margin-right: 25px
+
+		&:last-child
+			margin-left: 25px
+			transform: rotate(180deg)
+
 	&__content
 		@include flex(column, center, center)
 		width: 100%
@@ -37,6 +70,16 @@ $h-color4: #e02a2a
 		opacity: 0
 		font-size: .35em
 
+	&__button-back
+		position: absolute
+		top: 15px
+		left: 5px
+		border: 0
+		background-color: transparent
+
+		img
+			width: 34px
+			height: 34px
 
 	&__aside-menu
 		@include flex(column, flex-start, center)
@@ -178,13 +221,15 @@ $h-color4: #e02a2a
 		margin-bottom: 15px
 		
 		a
+			@include flex(row, center, center)
 			width: 60px
 			height: 60px
-			background-image: url('../image/icons/outin.png')
-			background-color: transparent
-			background-repeat: no-repeat
-			background-position: center
-			background-size: 50px
+			font-size: 25px
+			color: $color_white
+			border: 1px solid $color_white
+			border-radius: 100%
+			text-transform: uppercase
+			
 
 	&__article-panel
 		@include flex(row, center, flex-start)
@@ -254,9 +299,15 @@ $h-color4: #e02a2a
 			background-repeat: no-repeat
 			background-position: center
 			margin-bottom: 30px
-
 		&:nth-child(2)
 			background: url('../image/icons/add-user.svg')
+			background-size: 30px
+			background-repeat: no-repeat
+			background-position: center
+			margin-bottom: 30px
+		
+		&:nth-child(3)
+			background: url('../image/icons/outin.png')
 			background-size: 30px
 			background-repeat: no-repeat
 			background-position: center
@@ -351,10 +402,10 @@ $h-color4: #e02a2a
 		background: $h-color1
 		border-radius: 15px
 		width: 450px
-		height: 400px
+		height: 470px
 	
 
-		.form-input__input
+		input
 			margin: 15px 0
 			border-radius: 7px
 			background: $h-color3
@@ -368,7 +419,7 @@ $h-color4: #e02a2a
 				background: rgba($h_color2, .5)
 				transform: scale(1.05)
 
-		.form-input__button
+		button
 			padding: 10px 40px
 			border: 0
 			color: $color-white
@@ -377,6 +428,7 @@ $h-color4: #e02a2a
 			background: $h-color1
 			color: $color_main1
 			border: 1px solid $color_main1
+			margin-top: 30px 
 
 			&:hover 
 				background: $color_main1
@@ -388,8 +440,10 @@ $h-color4: #e02a2a
 				color: $color-white
 				border-color: transparent
 
-	&__button
-		margin-top: 30px 
+		a
+			margin-top: 15px
+			color: $color_main1
+			font-size: 16.5px
 
 .load-screen
 	@include flex(row, center, center)
@@ -407,6 +461,62 @@ $h-color4: #e02a2a
 	position: absolute
 	height: 100%
 	z-index: 1000
+
+.errorlist 
+	@include flex(row, flex-start, center)
+	width: 80%
+	padding: 0
+	margin: 0
+	list-style-type: none
+	word-wrap: 
+
+	li 
+		width: inherit
+		color: $h_color4
+		text-shadow: 0px 0px 0px rgba(0, 0, 0, .3)
+		word-wrap: break-word
+
+.container 
+	@include flex(column, center, center)
+	width: 100%
+	height: 100vh
+	overflow: hidden
+
+	&__error 
+		@include flex(column, center, center)
+
+		span:first-child 
+			font-size: 100px
+			letter-spacing: 11px
+			color: $color_main1
+			text-shadow: 2px 2px 0px rgba(0, 0, 0, 1)
+
+		span:last-child
+			font-size: 35px
+			letter-spacing: 10px
+			color: $color_main1
+			text-shadow: 1px 0px 0px rgba(0, 0, 0, 1)
+
+.message 
+	@include flex(column, center, center)
+	width: 100%
+	height: 100vh
+	background-color: $color_main1
+
+	span 
+		color: $color_white
+		font-size: 40px
+		margin-bottom: 40px
+
+	a
+		@include flex(row, center, center)
+		color: $color_white
+		border: 1px solid $color_white
+		border-radius: 100%
+		width: 54px
+		height: 54px
+		font-size: 18px
+		margin-bottom: -40px
 
 // Media response
 
@@ -476,10 +586,10 @@ $h-color4: #e02a2a
 
 		&__navigation-reg
 			transform: scale(2.5)
-			margin-top: 295px
+			margin-top: 315px
 	
 		&__out-index-page
-			margin-bottom: 285px
+			margin-bottom: 345px
 			transform: scale(2.5)
 
 		&__article-panel

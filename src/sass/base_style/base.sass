@@ -20,7 +20,24 @@ body
 
 h1, h2, h3, h4, h5, h6
 	font-size: inherit 
-	display: inline !important
+	display: inline 
+
+.page__article-panel
+	& > div:nth-child(2)
+		span:not([class="page__index"]) 
+			& > h1, h2, h3, h4, h5, h6
+				display: block !important
+				padding-top: 0px
+				margin-top: 10px
+
+			& > h1
+				font-size: 37px
+
+			& > h2
+				font-size: 32px
+
+			& > h3 
+				font-size: 27px
 
 
 a, a:active

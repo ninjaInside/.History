@@ -60,7 +60,14 @@ $h-color4: #e02a2a
 .wrraper_flex-sb
 	@include flex(row, space-between, center)
 .wrraper_relative-pos
-	position: relative 
+	position: relative
+.wrraper_absolute-pos
+	margin: 0 auto
+	position: absolute
+	left: 0
+	right: 0
+	max-width: 1650px !important
+	top: 0
 .wrraper_flex-center
 	@include flex(row, center, center)
 .wrraper_flex-column
@@ -76,3 +83,9 @@ $h-color4: #e02a2a
 	height: 350px !important
 .form-input__regestration_scale-b
 	transform: scale(1) !important
+
+.errorlist_text-center
+	text-align: center 
+	justify-content: center !important
+.errorlist_indent-p
+	padding-left: 10px !important
