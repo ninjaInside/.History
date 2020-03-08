@@ -24,7 +24,10 @@
 		</nav>
 		<div class="sidebar">
 			<button class="sidebar__button" data-event="toggle_menu"></button>
-            <a href="{% url 'registration' %}" class="sidebar__button" data-event="regestraiont-bar"></a>
+            <a href="{% url 'login' %}" class="sidebar__button" data-event="regestraiont-bar"></a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="sidebar__button"></a>
+            {% endif %}
             <a href="{% url 'homepage:index' %}" class="sidebar__root-link">H</a>
 		</div>
 	</div>

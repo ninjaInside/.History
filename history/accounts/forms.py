@@ -16,7 +16,6 @@ class UserForm(UserCreationForm, WidgetAttrsMixin):
             self.add_widget_attr(field, 'placeholder',
                     'Confirm your password')
 
-        self.add_widget_attr(field, 'class', 'form-input__input')
         super().get_initial_for_field(field, field_name)
 
 
@@ -27,5 +26,4 @@ class LoginForm(AuthenticationForm, WidgetAttrsMixin):
         elif field_name == 'password':
             self.add_widget_attr(field, 'placeholder', 'Your password')
 
-        field.widget.attrs['class'] = 'form-input__input'
         super().get_initial_for_field(field, field_name)

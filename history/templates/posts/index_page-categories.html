@@ -45,6 +45,23 @@
 				</div>
                 {% endfor %}
 			</div>
+            <div class="page__paginator">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">Первая страница</a>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="page__arrow-slide-page">{{ page_obj.previous_page_number }}</a>
+                {% else %}
+                    <span>Первая страница</span>
+                {% endif %}
+
+                <span class="page__arrow-slide-page">{{ page_obj.number }}</span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="page__arrow-slide-page">{{ page_obj.next_page_number }}</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">Последняя страница</a>
+                {% else %}
+                    <span>Последняя страница</span>
+                {% endif %}
+            </div>
 		</div>
 	</div>
 </body>

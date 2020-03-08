@@ -6,7 +6,7 @@ from .models import Post, Category
 
 
 class PostListView(ListView):
-    paginate_by = 100
+    paginate_by = 25
     template_name = 'posts/index_page-categories.html'
     context_object_name = 'post_list'
 
