@@ -21,8 +21,11 @@
                     <span>Time: {{ post.pub_date }}</span>
                     <span>Cat: {{ post.category.title }}</span>
 				</div>
+				<div class="page__copy">
+					<button class="page__button-copy">Копировать Статью</button>
+				</div>
 			</div>
-			<div>
+			<div class="page__main-text-article">
                 <span class="page__index"><h1>{{ post.title }}</h1></span>
                 <span>{{ post.content|safe }}</span>
 			</div>

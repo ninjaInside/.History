@@ -27,11 +27,20 @@ $h-color4: #e02a2a
 		margin-top: 30px
 		margin-bottom: 30px
 
-		& > button:not([class="page__arrow-slide-page"])
+		& > a:not([class="page__arrow-slide-page"])
 			background-color: transparent
 			border: 0
 			font-size: 25px
-			color: rgba(0, 0, 0, 1)
+			color: $color_main1
+			padding: 0 10px
+			margin: 0 5px
+			z-index: 100000
+
+		& > span
+			background-color: transparent
+			font-size: 25px
+			color: $color_black
+			padding: 0 10px
 			margin: 0 5px
 			z-index: 100000
 
@@ -236,6 +245,9 @@ $h-color4: #e02a2a
 		width: inherit
 		padding-top: 30px
 
+		* 
+			user-select: text
+
 		div 
 			width: 426px
 
@@ -254,6 +266,20 @@ $h-color4: #e02a2a
 
 				span
 					margin: 5px 0px
+
+
+			& > div:last-child 
+				@include flex(row, center, center)
+				margin-top: 30px
+
+				button
+					border: 0
+					border-radius: 10px
+					padding: 10px
+					font-size: 16px
+					background-color: $color_main1
+					color: $color_white
+
 
 		div:nth-child(2)
 			@include flex(column, center, flex-start)
@@ -465,10 +491,6 @@ $h-color4: #e02a2a
 .errorlist 
 	@include flex(row, flex-start, center)
 	width: 80%
-	padding: 0
-	margin: 0
-	list-style-type: none
-	word-wrap: 
 
 	li 
 		width: inherit
@@ -599,10 +621,6 @@ $h-color4: #e02a2a
 				
 				span:not([class$="index"])
 					font-size: 1.6em
-
-			& > div:first-child
-
-				div
 					
 
 	.sidebar
